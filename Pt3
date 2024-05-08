@@ -1,0 +1,53 @@
+using NUnit.Framework;
+
+[TestFixture]
+public class GeometryCalculatorTests
+{
+    private GeometryCalculator calculator;
+
+    [SetUp]
+    public void SetUp()
+    {
+        calculator = new GeometryCalculator();
+    }
+
+    [Test]
+    public void CalculateArea_Square_ReturnsCorrectArea()
+    {
+        // Arrange
+        double side = 5;
+
+        // Act
+        double area = calculator.CalculateArea(new Square(side));
+
+        // Assert
+        Assert.AreEqual(25, area);
+    }
+
+    [Test]
+    public void CalculateArea_Rectangle_ReturnsCorrectArea()
+    {
+        // Arrange
+        double length = 6;
+        double width = 4;
+
+        // Act
+        double area = calculator.CalculateArea(new Rectangle(length, width));
+
+        // Assert
+        Assert.AreEqual(24, area);
+    }
+
+    [Test]
+    public void CalculateArea_Circle_ReturnsCorrectArea()
+    {
+        // Arrange
+        double radius = 3;
+
+        // Act
+        double area = calculator.CalculateArea(new Circle(radius));
+
+        // Assert
+        Assert.AreEqual(28.274, area, 0.001);
+    }
+}
